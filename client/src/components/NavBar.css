@@ -1,3 +1,6 @@
+#header-desktop{
+    display: none;
+}
 .logo {
   width: 200px;
 }
@@ -31,20 +34,24 @@
 #logout-btn:hover{
     cursor: pointer;
 }
-/* .header a{
-    display: block;
-    margin-top: 20px;
-    color: #777;
-    text-decoration: none;
+
+
+@media(min-width:1200px){
+    #header-mobile{
+        display: none
+    }
+    #header-desktop{
+        display: block;
+    }
+    #header-desktop-container{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    #header-nav ul a{
+        display: inline-block;
+        position: relative;
+        top: 25px;
+        left: 80px;
+        padding: 0 20px 
+    }
 }
-.logout{
-    border: 2px solid #777;
-    border-radius: 28px;
-    width: 120px;
-    margin: 0 auto;
-    color: #777;
-    padding: 5px 0;
-    position: relative;
-    left: 15px;
-    margin-top: 40px
-} */
