@@ -12,7 +12,7 @@ export default function NavBar() {
       <header id="header-mobile">
         <div id="header-mobile-container">
           <div>
-            <img className="logo" src={logo} alt="logo-vanilla-marketing" />
+          <Link to="/"><img className="logo" src={logo} alt="logo-vanilla-marketing" /></Link>
           </div>
           <div id="burger-icon">
             <HamburgerMenu
@@ -41,7 +41,7 @@ export default function NavBar() {
       <header id="header-desktop">
         <div id="header-desktop-container">
           <div>
-            <img className="logo" src={logo} alt="logo-vanilla-marketing" />
+            <Link to="/"><img className="logo" src={logo} alt="logo-vanilla-marketing" /></Link>
           </div>
           <div>
             <nav id="header-nav">

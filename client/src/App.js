@@ -1,13 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Route, Switch} from 'react-router-dom';
-import NavBar from './components/NavBar'
+import NavBar from './components/NavBar';
+import Home from './pages/Home';
 
 function App() {
-  return(
-    <NavBar/>
-  )
+  return (
+    <section>
+      <NavBar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </section>
+  );
 }
 
 export default App;

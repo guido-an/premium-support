@@ -17,7 +17,8 @@
     color: #777;
     display: block;
     text-decoration: none;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    font-weight: 500;
 }
 #header-nav a:hover{
     color: #272727
@@ -52,6 +53,7 @@
         position: relative;
         top: 25px;
         left: 80px;
-        padding: 0 20px 
+        padding: 0 20px;
+        font-weight: 500;
     }
 }

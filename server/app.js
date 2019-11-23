@@ -45,16 +45,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
   
 
-
-
 // Enable authentication using session + passport
 app.use(session({
-  secret: process.env.irongenerator,
+  secret: process.env.SESSIONSECRET,
   resave: true,
   saveUninitialized: true,
+  cookie: { secure: false },
   store: new MongoStore( { mongooseConnection: mongoose.connection })
 }))
-
+app.use(flash());
+require('./passport')(app);
 
 app.use(flash());
 require('./passport')(app);
@@ -63,7 +63,7 @@ require('./passport')(app);
 const index = require('./routes/index');
 app.use('/', index);
 
-const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth/auth');
 app.use('/auth', authRoutes);
       
 
