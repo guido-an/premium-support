@@ -4,6 +4,7 @@ const User = require("../models/User");
 const Ticket = require("../models/Ticket");
 var ObjectId = require("mongodb").ObjectID;
 const sendEmail = require('../config/sendEmail')
+const uploadCloud = require("../config/uploadCloud");
 
 /************************************
 1) POST crea-ticket | crea ticket  ***/
@@ -15,7 +16,7 @@ router.use("/crea-ticket", (req, res, next) => {
     }
   });
   
-router.post("/crea-ticket",  (req, res) => {
+router.post("/crea-ticket", uploadCloud.single('picture'), (req, res) => {
     /* new ticket */
     let today = new Date();
     minutes = today.getMinutes().toString().padStart(2, '0') // adding a 0 if less then 10
@@ -30,15 +31,15 @@ router.post("/crea-ticket",  (req, res) => {
       message: req.body.message,
       user: ObjectId(req.session.currentUser._id),
       active: true,
-      service: req.body.service,
+      service: "Web Development",
       time: date,
-    //   picture: {
-    //     name: req.body.name,
-    //     path: req.file.url,
-    //     originalName: req.file.originalname
-    //   }
+      picture: {
+        name: "req.body.name",
+        path: req.file.url,
+        originalName: "req.file.originalname"
+      }
     });
-
+console.log(req.body, "req body!!!!")
       const ticket =  myTicket.save() // save ticket 
       const user = User.updateOne( // add the new ticket to the customer's tickets array 
         { _id: req.body.user },
