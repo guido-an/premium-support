@@ -56,15 +56,17 @@ app.use(session({
 app.use(flash());
 require('./passport')(app);
 
-app.use(flash());
-require('./passport')(app);
-    
 
-const index = require('./routes/index');
-app.use('/', index);
 
-const authRoutes = require('./routes/auth/auth');
+
+
+const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
       
+const adminRoutes = require('./routes/admin');
+app.use('/admin', adminRoutes);
+
+const userRoutes = require('./routes/user');
+app.use('/', userRoutes);
 
 module.exports = app;

@@ -1,43 +1,105 @@
+// import React, {useState} from 'react';
+// import {login} from '../api/authService';
+// import './Login.css'
+
+// export default function Login({liftUserUp, history}) {
+//   let [username, setUsername] = useState('');
+//   let [password, setPassword] = useState('');
+//   let [error, setError] = useState(null)
+
+//   const onSubmitHandler = e => {
+//     e.preventDefault();
+//     login(username, password).then(() => {
+//       if (username === process.env.REACT_APP_ADMIN) {
+//         history.push('/admin');
+//       } else {
+//         history.push('/tickets');
+//       }
+//     })
+//     .catch(err => {
+//       // setError(error = err.response.data.errorMessage)
+//       console.log(err.response.data.errorMessage, "errrrr from onsubmit")
+//     })
+//   };
+
+//   return (
+//     <section className="login-section">
+
+//       <form onSubmit={onSubmitHandler}>
+//         <p><strong>Username</strong></p>
+//         <input
+//           onChange={e => setUsername(e.target.value)}
+//           type="text"
+//           placeholder="Username"
+//           name="username"
+//         />
+//         <p><strong>Password</strong></p>
+//         <input
+//           onChange={e => setPassword(e.target.value)}
+//           type="password"
+//           placeholder="*****"
+//           name="password"
+//         />
+//         <button type="submit">LOGIN</button>
+//       </form>
+//      {error}
+//     </section>
+//   );
+// }
+
 import React, {useState} from 'react';
-import {login, getCurrentUser, logout} from '../api/authService'
+import {service} from '../api/service';
+import './Login.css';
 
-
-export default function Login() {
+export default function Login({liftUserUp, history}) {
   let [username, setUsername] = useState('');
   let [password, setPassword] = useState('');
-
+  let [error, setError] = useState(null);
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    login(username, password)
-    .then(res => {
-      console.log(res, "res from login")
-    })
-    .catch(err => {
-      console.log(err, "err from login")
-    })
+    service
+      .post('/auth/login', {
+        username,
+        password,
+      })
+      .then(res => {
+        liftUserUp(res.data.currentUser.username);
+        if (username === process.env.REACT_APP_ADMIN) {
+          history.push('/admin');
+        } else {
+          history.push('/tickets');
+        }
+      })
+      .catch(err => {
+        setError((error = err.response.data.errorMessage));
+      });
   };
 
   return (
-    <section>
+    <section className="login-section">
       <form onSubmit={onSubmitHandler}>
+        <p>
+          <strong>Username</strong>
+        </p>
         <input
           onChange={e => setUsername(e.target.value)}
           type="text"
           placeholder="Username"
           name="username"
         />
+        <p>
+          <strong>Password</strong>
+        </p>
         <input
           onChange={e => setPassword(e.target.value)}
           type="password"
           placeholder="*****"
           name="password"
         />
-        <button type="submit">Submit</button>
+        <button type="submit">LOGIN</button>
       </form>
-      <button onClick={logout}>logout</button>
-      <button onClick={getCurrentUser}>get current user</button>
-
+      {error}
     </section>
   );
 }

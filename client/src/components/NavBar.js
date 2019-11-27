@@ -1,18 +1,35 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+
 import './NavBar.css';
 import logo from '../images/logo-vanilla-marketing.png';
 import HamburgerMenu from 'react-hamburger-menu';
+import {service} from '../api/service';
 
-export default function NavBar() {
+export default function NavBar({liftUserUp,currentUser}) {
   const [open, setVisible] = useState(false);
 
+  const logoutUser = () => {
+    service.get('/auth/logout').then(() => {
+      liftUserUp(null);
+    });
+  };
+
+  const alertLogin = ()=> {
+    if(!currentUser){
+      alert("Questa sezione è privata. Effettua il login per accedere :) ")
+    }
+  }
+
   return (
+  
     <section>
       <header id="header-mobile">
         <div id="header-mobile-container">
           <div>
-          <Link to="/"><img className="logo" src={logo} alt="logo-vanilla-marketing" /></Link>
+            <Link to="/">
+              <img className="logo" src={logo} alt="logo-vanilla-marketing" />
+            </Link>
           </div>
           <div id="burger-icon">
             <HamburgerMenu
@@ -31,9 +48,9 @@ export default function NavBar() {
         {open && (
           <nav id="header-nav">
             <ul>
-              <Link to="/tickets">I miei tickets</Link>
-              <Link to="/crea-ticket">Apri un ticket</Link>
-              <p id="logout-btn">Logout</p>
+              <Link onClick={alertLogin} to="/tickets">I miei tickets</Link>
+              <Link onClick={alertLogin} to="/crea-ticket">Apri un ticket</Link>
+              <p onClick={logoutUser} id="logout-btn">Logout</p>
             </ul>
           </nav>
         )}
@@ -41,19 +58,26 @@ export default function NavBar() {
       <header id="header-desktop">
         <div id="header-desktop-container">
           <div>
-            <Link to="/"><img className="logo" src={logo} alt="logo-vanilla-marketing" /></Link>
+            <Link to="/">
+              <img className="logo" src={logo} alt="logo-vanilla-marketing" />
+            </Link>
           </div>
           <div>
             <nav id="header-nav">
               <ul>
-                <Link to="/tickets">I miei tickets</Link>
-                <Link to="/crea-ticket">Apri un ticket</Link>
+                <Link onClick={alertLogin} to="/tickets">I miei tickets</Link>
+                <Link onClick={alertLogin} to="/crea-ticket">Apri un ticket</Link>
               </ul>
             </nav>
           </div>
-          <div><p id="logout-btn">Logout</p></div>
+          <div>
+            <p onClick={logoutUser} id="logout-btn">
+              Logout
+            </p>
+          </div>
         </div>
       </header>
+     
     </section>
   );
 }

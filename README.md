@@ -1,2 +1,0 @@
-# MERN-Auth
-# premium-support
