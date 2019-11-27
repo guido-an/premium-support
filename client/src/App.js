@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import TicketsUser from './pages/user/TicketsUser';
 import CreaTicket from './pages/user/CreaTicket';
 import TicketsAdmin from './pages/admin/TicketsAdmin';
-import {service} from './api/service';
+import {serviceAPI} from './api/serviceAPI';
 
 function App() {
   let [currentUser, setCurrentUser] = useState(null);
@@ -19,7 +19,7 @@ function App() {
 
   
    useEffect(() => {
-    service.get('/auth/currentUser')
+    serviceAPI.get('/auth/currentUser')
       .then(res => {
         setCurrentUser((currentUser = res.data.currentUser.username));
       })

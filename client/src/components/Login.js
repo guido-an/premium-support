@@ -48,7 +48,7 @@
 // }
 
 import React, {useState} from 'react';
-import {service} from '../api/service';
+import {serviceAPI} from '../api/serviceAPI';
 import './Login.css';
 
 export default function Login({liftUserUp, history}) {
@@ -58,7 +58,7 @@ export default function Login({liftUserUp, history}) {
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    service
+    serviceAPI
       .post('/auth/login', {
         username,
         password,

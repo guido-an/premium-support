@@ -4,13 +4,13 @@ import {Link} from 'react-router-dom';
 import './NavBar.css';
 import logo from '../images/logo-vanilla-marketing.png';
 import HamburgerMenu from 'react-hamburger-menu';
-import {service} from '../api/service';
+import {serviceAPI} from '../api/serviceAPI';
 
 export default function NavBar({liftUserUp,currentUser}) {
   const [open, setVisible] = useState(false);
 
   const logoutUser = () => {
-    service.get('/auth/logout').then(() => {
+    serviceAPI.get('/auth/logout').then(() => {
       liftUserUp(null);
     });
   };

@@ -1,40 +1,51 @@
 import React, {useState} from 'react';
-import {service} from '../../api/service';
+import {serviceAPI} from '../../api/serviceAPI';
 
 export default function CreaTicket({history}) {
   let [title, setTitle] = useState('');
+  let [service, setService] = useState('');
   let [message, setMessage] = useState('');
 
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    service.post('/crea-ticket', {title, message})
+    serviceAPI
+      .post('/crea-ticket', {title, service, message})
       .then(() => {
-          console.log("all good")
-        history.push("/tickets");
+        console.log('all good');
+        history.push('/tickets');
       })
       .catch(err => {
-        history.push("/test");
+         debugger
         console.log(err);
       });
+    console.log(service, "service")
   };
   return (
     <div>
       <h1 className="page-title">Crea ticket</h1>
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <input
           onChange={e => setTitle(e.target.value)}
           type="text"
           name="title"
           placeholder="Title"
-          required={true}
+          required
         />
+        <select onChange={e => setService(e.target.value)} required>
+         <option value="">* Seleziona un servizio</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Social Media">Social Media</option>
+          <option value="Web Marketing">Web Marketing</option>
+          <option value="Graphic Design">Graphic Design</option>
+        </select>
         <textarea
           onChange={e => setMessage(e.target.value)}
           name="message"
           placeholder="Message"
+          required
         />
-        <button onClick={onSubmitHandler} type="submit">Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

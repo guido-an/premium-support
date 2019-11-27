@@ -8,7 +8,7 @@ const ticketSchema = new Schema(
     active: Boolean,
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     answers: Array,
-    service: String,// { type: String, required: true },
+    service: { type: String, enum: ['Web Development', 'Social Media', "Web Marketing", "Graphic Design"], required: true },
     time: String,
     picture: Object
   },
