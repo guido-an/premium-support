@@ -93,7 +93,7 @@ export default function CreaTicket({history}) {
           placeholder="Title"
           required
         />
-        <select required>
+        <select name="service" required>
           <option value="">* Seleziona un servizio</option>
           <option value="Web Development">Web Development</option>
           <option value="Social Media">Social Media</option>

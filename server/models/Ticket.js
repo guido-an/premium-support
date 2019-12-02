@@ -10,7 +10,7 @@ const ticketSchema = new Schema(
     answers: Array,
     service: { type: String, enum: ['Web Development', 'Social Media', "Web Marketing", "Graphic Design"], required: true },
     time: String,
-    picture: Object
+    picture: String
   },
   {
     timestamps: {

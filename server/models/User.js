@@ -5,7 +5,8 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  tickets: Array
+  tickets: Array,
+  serviceAdmin:  { type: String, enum: ['Web Development', 'Social Media', "Web Marketing", "Graphic Design"] },
 }, {
   timestamps: {
     createdAt: 'created_at',

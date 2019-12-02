@@ -29,6 +29,8 @@ router.post('/signup', (req, res) => {
     const newUser = new User({
       username,
       password: hashPass,
+      email: req.body.email,
+      serviceAdmin: req.body.serviceAdmin,
     });
 
     newUser
