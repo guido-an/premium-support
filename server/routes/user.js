@@ -4,9 +4,10 @@ const User = require('../models/User');
 const Ticket = require('../models/Ticket');
 const sendEmail = require('../config/sendEmail');
 const uploadCloud = require('../config/uploadCloud');
+const mongoose = require('mongoose')
 
 /************************************
-1) POST crea-ticket | crea ticket  ***/
+1) POST | crea ticket  ***/
 router.use('/crea-ticket', (req, res, next) => {
   if (req.session.currentUser) {
     next();
@@ -16,23 +17,14 @@ router.use('/crea-ticket', (req, res, next) => {
 });
 
 router.post('/crea-ticket', uploadCloud.single('picture'), (req, res) => {
-  /* new ticket */
+
   let today = new Date();
-  minutes = today
-    .getMinutes()
-    .toString()
-    .padStart(2, '0'); // adding a 0 if less then 10
   let date =
     today.getDate() +
     '-' +
     (today.getMonth() + 1) +
     '-' +
-    today.getFullYear() +
-    ' ' +
-    ' | ' +
-    today.getHours() +
-    ':' +
-    minutes;
+    today.getFullYear()
 
   if (req.file == undefined) {
     req.file = '';
@@ -76,5 +68,33 @@ router.post('/crea-ticket', uploadCloud.single('picture'), (req, res) => {
       );
   });
 });
+
+/**************************
+2) GET | find tickets  ***/
+router.get('/tickets', (req, res) => {
+  Ticket.find({user: mongoose.Types.ObjectId(req.session.currentUser._id)})
+  .then(tickets => {
+    res.status(200).json(tickets)
+  })
+  .catch(err => {
+    res.status(401).json(err)
+  })
+})
+
+/**************************
+3) GET | ticket by :id  ***/
+router.get('/tickets/:id', (req, res) => {
+  Ticket.findById({_id: mongoose.Types.ObjectId("5de533cde4540457cac6c43b")})
+  .then(ticket => {
+    console.log(ticket)
+    res.status(200).json(ticket)
+  })
+  .catch(err => {
+    res.status(401).json(err)
+  })
+})
+
+
+
 
 module.exports = router;

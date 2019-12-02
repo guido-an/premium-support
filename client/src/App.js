@@ -7,6 +7,7 @@ import ProtectedRouteAdmin from './components/ProtectedRouteAdmin';
 import Home from './pages/Home';
 import TicketsUser from './pages/user/TicketsUser';
 import CreaTicket from './pages/user/CreaTicket';
+import TicketPage from './pages/user/TicketPage';
 import TicketsAdmin from './pages/admin/TicketsAdmin';
 import {serviceAPI} from './api/serviceAPI';
 
@@ -41,14 +42,19 @@ function App() {
         />
         <ProtectedRoute
           currentUser={currentUser}
+          path="/crea-ticket"
+          component={CreaTicket}
+        />
+        <ProtectedRoute
+          currentUser={currentUser}
           exact
           path="/tickets"
           component={TicketsUser}
         />
         <ProtectedRoute
           currentUser={currentUser}
-          path="/crea-ticket"
-          component={CreaTicket}
+          path="/tickets/:id"
+          component={TicketPage}
         />
         <ProtectedRouteAdmin
           currentUser={currentUser}

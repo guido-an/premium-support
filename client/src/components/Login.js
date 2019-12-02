@@ -97,7 +97,7 @@ export default function Login({liftUserUp, history}) {
           placeholder="*****"
           name="password"
         />
-        <button type="submit">LOGIN</button>
+        <button className="button-success" type="submit">LOGIN</button>
       </form>
       {error}
     </section>

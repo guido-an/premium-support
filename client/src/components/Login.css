@@ -11,15 +11,4 @@
 .login-section input::placeholder {
   font-size: 14px;
 }
-.login-section button {
-  display: block;
-  margin: 0 auto;
-  margin-top: 40px;
-  background-color: green;
-  color:#fff;
-  padding: 10px 25px;
-  border-radius: 4px
-}
-.login-section button:hover{
-    cursor: pointer;
-}
+
