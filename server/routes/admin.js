@@ -1,23 +1,31 @@
 const express = require('express');
-const passport = require('passport');
 const router = express.Router();
+const Ticket = require('../models/Ticket');
 
-// Bcrypt to encrypt passwords
-const bcrypt = require('bcrypt');
-const bcryptSalt = 10;
+
 
 /********************************
-1) GET tickets (private) | /admin *********/
+1) GET tickets (private) | /admin ****/
 router.use('/', (req, res, next) => {
-  if (req.session.currentUser.username === process.env.admin) {
+  if (req.session.currentUser.admin) {
     next();
   } else {
+    console.log(req.session.currentUser.username, " else req.session.currentUser.username")
     res.status(401).json({message: "You don't have the credentials"});
   }
 });
 
 router.get('/', (req, res, next) => {
-  res.status(200).json({tickets: 'tickets coming'});
+  Ticket.find().sort({created_at: -1})
+  .then(tickets => {
+    console.log("tickets", tickets)
+    res.status(200).json(tickets)
+  })
+  .catch(err => {
+    console.log(err)
+  })
 });
+
+
 
 module.exports = router;

@@ -19,11 +19,15 @@ const Table = ({array}) => {
         {array.map((item, index) => {
           return (
             <tr key={index}>
-              <td> <strong>{item.title}</strong></td>
-              <td> {item.time}</td>
-              <td> {item.service}</td>
-               {item.active ? 'aperto' : 'chiuso'}
-              <td> <Link to={`/tickets/${item._id}`}>> Vedi ticket </Link></td>
+            <td> <Link to={`/tickets/${item._id}`}><strong>{item.title}</strong></Link></td>
+              <td>{item.time}</td>
+              <td>{item.service}</td>
+               {item.active ? (
+                <td>aperto</td>
+               ) : (
+                 <td>chiuso</td>
+               )}
+              <td> <Link to={`/tickets/${item._id}`}>> Vedi ticket</Link></td>
             </tr>
           );
         })}

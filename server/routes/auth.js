@@ -62,9 +62,8 @@ router.post('/login', (req, res) => {
     .then(passwordCorrect => {
       if (passwordCorrect) {
         req.session.currentUser = currentUser;
-        console.log(req.session, 'req session');
         res.status(200).json({message: 'Loggedin succesfully', currentUser});
-        console.log(currentUser,"current user")
+
       } else {
         res.status(401).send({
           errorMessage: 'Incorrect password',

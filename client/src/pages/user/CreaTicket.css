@@ -4,8 +4,7 @@
   margin: 20px 0 2px;
   color: #777;
 }
-.create-ticket-conatiner input,
-.create-ticket-conatiner textarea {
+.create-ticket-conatiner input{
   display: block;
   margin: 0 auto;
   width: 100%;

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {serviceAPI} from '../../api/serviceAPI';
-import './TicketsUser.css'
-import Table from '../../components/Table'
+import TableUser from '../../components/Table'
 
 export default function TicketsUser({currentUser}){
 
@@ -20,8 +19,8 @@ export default function TicketsUser({currentUser}){
         
         <section>
             <div className="section-container">
-            {currentUser && (<h1 className="title-page">Hello {currentUser}!</h1>)}
-              <Table array={tickets}></Table>
+            {currentUser && (<h1 className="title-page">Hello {currentUser.username}!</h1>)}
+              <TableUser array={tickets}></TableUser>
             </div>
         </section>
     )

@@ -26,3 +26,11 @@
   background-color: #4caf50;
   color: white;
 }
+.table a{
+  text-decoration: none;
+  color: #777
+}
+
+.table a:hover{
+  color: #222
+}

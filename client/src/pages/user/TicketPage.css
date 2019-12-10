@@ -1,0 +1,10 @@
+.message-container{
+    border-bottom: 2px solid #fafafa;
+    padding-bottom: 20px
+}
+.admin-answer{
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom:5px
+}

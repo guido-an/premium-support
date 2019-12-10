@@ -69,4 +69,7 @@ app.use('/admin', adminRoutes);
 const userRoutes = require('./routes/user');
 app.use('/', userRoutes);
 
+const sharedRoutes = require('./routes/shared');
+app.use('/', sharedRoutes);
+
 module.exports = app;

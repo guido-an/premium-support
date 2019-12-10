@@ -16,7 +16,7 @@ export default function CreaTicket({history}) {
     const formData = new FormData(formRef.current)
     serviceAPI
       .post('/crea-ticket', formData)
-      .then((res) => {
+      .then(() => {
         history.push('/tickets');
       })
       .catch(err => {
@@ -45,6 +45,7 @@ export default function CreaTicket({history}) {
         />
         <label>Messaggio</label>
         <textarea
+          className="my-textarea"
           name="message"
           placeholder="* Messaggio"
           rows="10"

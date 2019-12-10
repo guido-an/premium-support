@@ -8,7 +8,7 @@ const ProtectedRoute  = ({component: Component, currentUser, ...rest}) => {
       <Route
         {...rest}
         render={ props  => {
-            if(currentUser === process.env.REACT_APP_ADMIN){
+            if(currentUser && currentUser.admin){
               return <Component {...props} currentUser={currentUser}/>
             } else {
               return <Redirect to={{pathname: '/', state: {from: props.location}}} />

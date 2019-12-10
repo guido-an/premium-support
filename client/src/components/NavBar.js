@@ -67,6 +67,7 @@ export default function NavBar({liftUserUp,currentUser}) {
               <ul>
                 <Link onClick={alertLogin} to="/tickets">I miei tickets</Link>
                 <Link onClick={alertLogin} to="/crea-ticket">Apri un ticket</Link>
+                <Link onClick={alertLogin} to="/admin">Admin</Link>
               </ul>
             </nav>
           </div>
