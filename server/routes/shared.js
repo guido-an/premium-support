@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 
 
 /********************************
-1) GET ticket by :id |  | same for admin ***/
+1) GET ticket by :id ***********/
 router.get('/tickets/:id', (req, res) => {
     currentUser = req.session.currentUser;
     Ticket.findById({_id: mongoose.Types.ObjectId(req.params.id)})
