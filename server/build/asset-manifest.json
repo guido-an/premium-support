@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.159cbe8a.chunk.css",
+    "main.js": "/static/js/main.7722b1dd.chunk.js",
+    "main.js.map": "/static/js/main.7722b1dd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b240f91f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b240f91f.js.map",
+    "static/js/2.d7836512.chunk.js": "/static/js/2.d7836512.chunk.js",
+    "static/js/2.d7836512.chunk.js.map": "/static/js/2.d7836512.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.249e80cac6a1c0c3b57ecbc39ee9d21d.js": "/precache-manifest.249e80cac6a1c0c3b57ecbc39ee9d21d.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.159cbe8a.chunk.css.map": "/static/css/main.159cbe8a.chunk.css.map",
+    "static/media/logo-vanilla-marketing.png": "/static/media/logo-vanilla-marketing.6ad8f5e8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b240f91f.js",
+    "static/js/2.d7836512.chunk.js",
+    "static/css/main.159cbe8a.chunk.css",
+    "static/js/main.7722b1dd.chunk.js"
+  ]
+}
