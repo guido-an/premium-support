@@ -55,6 +55,7 @@ export default function NavBar({liftUserUp,currentUser}) {
           </nav>
         )}
       </header>
+      
       <header id="header-desktop">
         <div id="header-desktop-container">
           <div>
