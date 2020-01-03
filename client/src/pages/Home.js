@@ -7,5 +7,6 @@ export default function Home ({liftUserUp, history}) {
       <h1 style={{ textAlign: 'center' }} className="title-page">Premium Support</h1>
       <Login liftUserUp={liftUserUp} history={history} />
     </section>
+    
   )
 }
