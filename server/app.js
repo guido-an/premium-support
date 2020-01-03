@@ -43,9 +43,8 @@ app.use(cors({
 app.use(express.static(path.join(__dirname, "build")));
 
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
   
-
 // Enable authentication using session + passport
 app.use(session({
   secret: process.env.SESSIONSECRET,

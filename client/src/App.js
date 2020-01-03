@@ -89,7 +89,7 @@ function App() {
     setCurrentUser((currentUser = user));
   };
 
-  
+
    useEffect(() => {
     serviceAPI.get('/auth/currentUser')
       .then(res => {
