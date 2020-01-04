@@ -3,7 +3,6 @@ const router = express.Router();
 const Ticket = require('../models/Ticket');
 
 
-
 /********************************
 1) GET tickets (private) | /admin ****/
 router.use('/', (req, res, next) => {
